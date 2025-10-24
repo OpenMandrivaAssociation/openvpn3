@@ -40,6 +40,8 @@ BuildRequires:  pkgconf
 BuildRequires:  lib64mbedtls-devel
 BuildRequires:  lib64polkit1-devel >= 0.112
 BuildRequires:  lib64tinyxml2-devel
+BuildRequires:  lib64nl3-devel
+BuildRequires:  lib64protobuf-devel
 
 Requires:       gdbuspp
 
