@@ -39,7 +39,7 @@ BuildRequires:  ninja
 BuildRequires:  pkgconf
 BuildRequires:  lib64mbedtls-devel
 BuildRequires:  lib64polkit1-devel >= 0.112
-BuildRequires:  lib64tinyxml2
+BuildRequires:  lib64tinyxml2-devel
 
 Requires:       gdbuspp
 
