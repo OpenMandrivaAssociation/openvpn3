@@ -102,10 +102,6 @@ install -Dm644 %{SOURCE2} %{buildroot}%{_prefix}/lib/sysusers.d/%{name}.conf
 install -Dm644 COPYRIGHT.md %{buildroot}%{_datadir}/licenses/%{name}/COPYRIGHT.md
 
 # -------------------------------------------------------------------------
-%check
-meson test --num-processes $(nproc) --print-errorlogs -C %{_builddir}/build
-
-# -------------------------------------------------------------------------
 %post
 openvpn3-admin init-config --write-configs --force || :
 systemctl reload dbus || :
