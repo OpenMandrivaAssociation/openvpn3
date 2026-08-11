@@ -6,8 +6,10 @@ Release:        1
 Summary:        OpenVPN 3 Linux client
 
 License:        AGPL-3.0-only
+Group:          Networking/Other
 Url:            https://codeberg.org/OpenVPN/openvpn3-linux
 Conflicts:      openvpn
+Source100:      openvpn3.rpmlintrc
 Source0:        https://swupdate.openvpn.net/community/releases/openvpn3-linux-%{version}.tar.xz
 Source1:        openvpn3.rule
 Source2:        sysusers-openvpn3.conf
@@ -99,7 +101,7 @@ rm -rf %{buildroot}/usr/local
 
 # Extra files not installed by meson
 install -Dm644 %{SOURCE1} %{buildroot}%{_sysconfdir}/repkg/rules/system/%{name}.rule
-install -Dm644 %{SOURCE2} %{buildroot}%{_prefix}/lib/sysusers.d/%{name}.conf
+install -Dm644 %{SOURCE2} %{buildroot}%{_sysusersdir}/%{name}.conf
 install -Dm644 COPYRIGHT.md %{buildroot}%{_datadir}/licenses/%{name}/COPYRIGHT.md
 
 # -------------------------------------------------------------------------
@@ -143,7 +145,7 @@ systemctl reload dbus || :
 
 # ---------- Misc config ----------
 %{_sysconfdir}/repkg/rules/system/%{name}.rule
-%{_prefix}/lib/sysusers.d/%{name}.conf
+%{_sysusersdir}/%{name}.conf
 
 # ---------- Man pages ----------
 %{_mandir}/man1/*.1*
@@ -157,7 +159,7 @@ systemctl reload dbus || :
 %{_includedir}/openvpn3/constants.h
 
 # ---------- Python bindings (single wildcard – includes __pycache__) ----------
-%{_prefix}/lib/python3.11/site-packages/openvpn3/
+%{python_sitelib}/openvpn3/
 
 # ---------- Runtime directories ----------
 %dir %{_localstatedir}/lib/openvpn3/

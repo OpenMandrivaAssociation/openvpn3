@@ -1,0 +1,6 @@
+addFilter("no-group-tag")
+addFilter("hardcoded-library-path")
+addFilter("description-line-too-long")
+addFilter("no-%check-section")
+addFilter("mixed-use-of-spaces-and-tabs")
+addFilter("non-coherent-filename")

@@ -1,6 +1,5 @@
-diff -ruN openvpn3-linux-27.1.orig/openvpn3-core/openvpn/openssl/pki/x509certinfo.hpp openvpn3-linux-27.1/openvpn3-core/openvpn/openssl/pki/x509certinfo.hpp
---- openvpn3-linux-27.1.orig/openvpn3-core/openvpn/openssl/pki/x509certinfo.hpp	2026-07-07 17:47:41.000000000 +0200
-+++ openvpn3-linux-27.1/openvpn3-core/openvpn/openssl/pki/x509certinfo.hpp	2026-08-11 18:46:51.247347309 +0200
+--- a/openvpn3-core/openvpn/openssl/pki/x509certinfo.hpp	2026-07-07 17:47:41.000000000 +0200
++++ b/openvpn3-core/openvpn/openssl/pki/x509certinfo.hpp	2026-08-11 18:46:51.247347309 +0200
 @@ -139,14 +139,14 @@
  {
      static const char nullc = '\0';
@@ -37,9 +36,8 @@ diff -ruN openvpn3-linux-27.1.orig/openvpn3-core/openvpn/openssl/pki/x509certinf
  }
  
  /**
-diff -ruN openvpn3-linux-27.1.orig/openvpn3-core/openvpn/openssl/ssl/sslctx.hpp openvpn3-linux-27.1/openvpn3-core/openvpn/openssl/ssl/sslctx.hpp
---- openvpn3-linux-27.1.orig/openvpn3-core/openvpn/openssl/ssl/sslctx.hpp	2026-07-07 17:47:41.000000000 +0200
-+++ openvpn3-linux-27.1/openvpn3-core/openvpn/openssl/ssl/sslctx.hpp	2026-08-11 18:46:51.247588402 +0200
+--- a/openvpn3-core/openvpn/openssl/ssl/sslctx.hpp	2026-07-07 17:47:41.000000000 +0200
++++ b/openvpn3-core/openvpn/openssl/ssl/sslctx.hpp	2026-08-11 18:46:51.247588402 +0200
 @@ -1804,7 +1804,7 @@
          const ASN1_INTEGER *ai = X509_get_serialNumber(cert);
          if (!ai)
