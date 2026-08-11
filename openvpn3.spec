@@ -115,10 +115,6 @@ systemctl reload dbus || :
 
 # -------------------------------------------------------------------------
 %files
-%exclude %{_prefix}/lib/meson-private
-%exclude %{_prefix}/share/meson
-%exclude /usr/local
-
 %license COPYRIGHT.md
 
 # ---------- Binaries (all in /usr/bin) ----------
@@ -127,6 +123,7 @@ systemctl reload dbus || :
 %{_bindir}/openvpn2
 %{_bindir}/openvpn3-admin
 %{_bindir}/openvpn3-autoload
+%{_bindir}/openvpn3-desktop-session-watcher
 
 # ---------- libexec ----------
 %{_libexecdir}/openvpn3-linux/
@@ -145,6 +142,7 @@ systemctl reload dbus || :
 # ---------- Systemd ----------
 %{_unitdir}/openvpn3-session@.service
 %{_unitdir}/openvpn3-autoload.service
+%{_userunitdir}/openvpn3-desktop-session-watcher.service
 
 # ---------- Misc config ----------
 %{_sysconfdir}/repkg/rules/system/%{name}.rule
