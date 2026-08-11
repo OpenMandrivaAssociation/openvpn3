@@ -1,6 +1,5 @@
 sources: 
-  openvpn3-linux-26.tar.xz: 533ba269a1e530e9d48c4f38c49fc53586886a73
   openvpn3-subprojects.tar.gz: 99f8f7fe29469cbf615ed77b14c6495ccb949299
   openvpn3.rule: 0a67654d3023462c80ba99ffb9c482b8a8f23225
   sysusers-openvpn3.conf: 80964d23ac86d6e94ad3d4cc3bd31c1761af3063
-  openvpn3-linux-26.tar.xz.asc: 84aaffea07ef08d55d3fcc316a362690ba612c17
+  openvpn3-linux-27.1.tar.xz: d8c5f1e9f44e9c5171fd7e29922702b3cc00fd45

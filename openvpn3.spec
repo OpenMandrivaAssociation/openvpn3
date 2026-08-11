@@ -1,8 +1,8 @@
 %define debug_package %{nil}
 
 Name:           openvpn3
-Version:        26
-Release:        2%{?dist}2
+Version:        27.1
+Release:        1
 Summary:        OpenVPN 3 Linux client
 
 License:        AGPL-3.0-only
