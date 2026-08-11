@@ -1,0 +1,51 @@
+diff -ruN openvpn3-linux-27.1.orig/openvpn3-core/openvpn/openssl/pki/x509certinfo.hpp openvpn3-linux-27.1/openvpn3-core/openvpn/openssl/pki/x509certinfo.hpp
+--- openvpn3-linux-27.1.orig/openvpn3-core/openvpn/openssl/pki/x509certinfo.hpp	2026-07-07 17:47:41.000000000 +0200
++++ openvpn3-linux-27.1/openvpn3-core/openvpn/openssl/pki/x509certinfo.hpp	2026-08-11 18:46:51.247347309 +0200
+@@ -139,14 +139,14 @@
+ {
+     static const char nullc = '\0';
+     std::string ret;
+-    X509_NAME *x509_name = X509_get_subject_name(cert);
++    auto *x509_name = X509_get_subject_name(cert);
+     int i = X509_NAME_get_index_by_NID(x509_name, nid, -1);
+     if (i >= 0)
+     {
+-        X509_NAME_ENTRY *ent = X509_NAME_get_entry(x509_name, i);
++        const X509_NAME_ENTRY *ent = X509_NAME_get_entry(x509_name, i);
+         if (ent)
+         {
+-            ASN1_STRING *val = X509_NAME_ENTRY_get_data(ent);
++            const ASN1_STRING *val = X509_NAME_ENTRY_get_data(ent);
+             unsigned char *buf;
+             buf = (unsigned char *)1; // bug in OpenSSL 0.9.6b ASN1_STRING_to_UTF8
+                                       // requires this workaround
+@@ -164,7 +164,7 @@
+         i = X509_get_ext_by_NID(cert, nid, -1);
+         if (i >= 0)
+         {
+-            X509_EXTENSION *ext = X509_get_ext(cert, i);
++            auto *ext = X509_get_ext(cert, i);
+             if (ext)
+             {
+                 BIO *bio = BIO_new(BIO_s_mem());
+@@ -225,7 +225,7 @@
+ static inline std::string x509_get_serial_hex(::X509 *cert)
+ {
+     const ASN1_INTEGER *asn1_i = X509_get_serialNumber(cert);
+-    return render_hex_sep(asn1_i->data, asn1_i->length, ':', false);
++    return render_hex_sep(ASN1_STRING_get0_data(asn1_i), ASN1_STRING_length(asn1_i), ':', false);
+ }
+ 
+ /**
+diff -ruN openvpn3-linux-27.1.orig/openvpn3-core/openvpn/openssl/ssl/sslctx.hpp openvpn3-linux-27.1/openvpn3-core/openvpn/openssl/ssl/sslctx.hpp
+--- openvpn3-linux-27.1.orig/openvpn3-core/openvpn/openssl/ssl/sslctx.hpp	2026-07-07 17:47:41.000000000 +0200
++++ openvpn3-linux-27.1/openvpn3-core/openvpn/openssl/ssl/sslctx.hpp	2026-08-11 18:46:51.247588402 +0200
+@@ -1804,7 +1804,7 @@
+         const ASN1_INTEGER *ai = X509_get_serialNumber(cert);
+         if (!ai)
+             return;
+-        if (ai->type == V_ASN1_NEG_INTEGER) // negative serial number is considered to be undefined
++        if (ASN1_STRING_type(ai) == V_ASN1_NEG_INTEGER) // negative serial number is considered to be undefined
+             return;
+         if (!is_safe_conversion<int>(authcert.serial.size()))
+             return;

@@ -12,6 +12,7 @@ Source0:        https://swupdate.openvpn.net/community/releases/openvpn3-linux-%
 Source1:        openvpn3.rule
 Source2:        sysusers-openvpn3.conf
 Source3:        openvpn3-subprojects.tar.gz
+Patch0:         openvpn3-27.1-openssl4-const.patch
 
 ExcludeArch:    armv7hl i686
 
