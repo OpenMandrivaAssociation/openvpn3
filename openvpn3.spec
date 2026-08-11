@@ -82,7 +82,7 @@ meson setup %{_builddir}/build \
     -Dcpp_std=c++20 \
     -Dselinux=disabled \
     -Dselinux_policy=disabled \
-    -Dbash-completion=enabled \
+    -Dbash-completion=disabled \
     -Dtest_programs=enabled \
     -Dunit_tests=disabled \
     --reconfigure
@@ -103,6 +103,10 @@ rm -rf %{buildroot}/usr/local
 install -Dm644 %{SOURCE1} %{buildroot}%{_sysconfdir}/repkg/rules/system/%{name}.rule
 install -Dm644 %{SOURCE2} %{buildroot}%{_sysusersdir}/%{name}.conf
 install -Dm644 COPYRIGHT.md %{buildroot}%{_datadir}/licenses/%{name}/COPYRIGHT.md
+# openvpn2 completion is generated from the in-tree python module and
+# fails in an out-of-tree meson build. Ship the static openvpn3 helper.
+install -Dm644 src/shell/bash-completion/openvpn3 %{buildroot}%{_datadir}/bash-completion/completions/openvpn3
+ln -sf openvpn3 %{buildroot}%{_datadir}/bash-completion/completions/openvpn3-admin
 
 # -------------------------------------------------------------------------
 %post
@@ -128,7 +132,6 @@ systemctl reload dbus || :
 %{_libexecdir}/openvpn3-linux/
 
 # ---------- Bash completion ----------
-%{_datadir}/bash-completion/completions/openvpn2
 %{_datadir}/bash-completion/completions/openvpn3
 %{_datadir}/bash-completion/completions/openvpn3-admin
 
