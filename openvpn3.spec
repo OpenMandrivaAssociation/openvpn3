@@ -57,7 +57,7 @@ OpenVPN 3 Linux client, providing a D-Bus service for managing OpenVPN connectio
 
 # -------------------------------------------------------------------------
 %prep
-%autosetup -n openvpn3-linux-%{version}
+%autosetup -p1 -n openvpn3-linux-%{version}
 tar -xzf %{SOURCE3} -C .
 
 # -------------------------------------------------------------------------
