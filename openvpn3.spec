@@ -2,7 +2,7 @@
 
 Name:           openvpn3
 Version:        27.1
-Release:        1
+Release:        2
 Summary:        OpenVPN 3 Linux client
 
 License:        AGPL-3.0-only
@@ -34,10 +34,10 @@ BuildRequires:  lib64openssl-devel
 BuildRequires:  systemd
 BuildRequires:  lib64systemd-devel
 BuildRequires:  lib64z-devel
-BuildRequires:  python-dbus
-BuildRequires:  lib64python-devel
-BuildRequires:  python-docutils
-BuildRequires:  python-jinja2
+BuildRequires:  pkgconfig(python3)
+BuildRequires:  python%{pyver}dist(dbus-python)
+BuildRequires:  python%{pyver}dist(docutils)
+BuildRequires:  python%{pyver}dist(jinja2)
 BuildRequires:  ninja
 BuildRequires:  pkgconf
 BuildRequires:  lib64mbedtls-devel
