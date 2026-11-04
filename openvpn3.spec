@@ -167,4 +167,3 @@ systemctl reload dbus || :
 %dir %{_localstatedir}/lib/openvpn3/configs/
 
 # -------------------------------------------------------------------------
-%changelog
