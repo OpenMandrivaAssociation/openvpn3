@@ -2,7 +2,7 @@
 
 Name:           openvpn3
 Version:        27.1
-Release:        2
+Release:        3
 Summary:        OpenVPN 3 Linux client
 
 License:        AGPL-3.0-only
